@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_product_manual_product_manuals",
+  "info": {
+    "displayName": "Product Manual",
+    "icon": "slideshow",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "textManual": {
+      "type": "blocks"
+    },
+    "mediaManual": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

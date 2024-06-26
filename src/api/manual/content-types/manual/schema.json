@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "manuals",
+  "info": {
+    "singularName": "manual",
+    "pluralName": "manuals",
+    "displayName": "Manual",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "des": {
+      "type": "blocks"
+    }
+  }
+}

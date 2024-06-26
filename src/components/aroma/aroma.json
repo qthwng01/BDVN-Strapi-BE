@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_aroma_aromas",
+  "info": {
+    "displayName": "Aroma",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

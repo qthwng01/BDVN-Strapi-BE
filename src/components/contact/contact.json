@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_contact_contacts",
+  "info": {
+    "displayName": "contact",
+    "icon": "pencil"
+  },
+  "options": {},
+  "attributes": {
+    "info": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "all_products",
+  "info": {
+    "singularName": "products",
+    "pluralName": "all-products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "categoryProducts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "brandProduct": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::brand.brand"
+    },
+    "discountPrice": {
+      "type": "float",
+      "required": true
+    },
+    "price": {
+      "type": "float"
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "onStock": {
+      "type": "boolean",
+      "required": true
+    },
+    "aroma": {
+      "type": "component",
+      "repeatable": true,
+      "component": "aroma.aroma"
+    },
+    "capacity": {
+      "type": "component",
+      "repeatable": true,
+      "component": "capacity.capacity"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "productManual": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product-manual.product-manual"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}
