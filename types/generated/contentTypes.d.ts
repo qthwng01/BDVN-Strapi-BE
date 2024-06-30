@@ -794,6 +794,7 @@ export interface ApiAboutAbout extends Schema.SingleType {
     singularName: 'about';
     pluralName: 'abouts';
     displayName: 'About';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -801,6 +802,7 @@ export interface ApiAboutAbout extends Schema.SingleType {
   attributes: {
     title: Attribute.String;
     des: Attribute.Blocks;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -833,7 +835,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     slug: Attribute.UID<'api::article.article', 'title'>;
-    orgImage: Attribute.Media<'images'>;
+    media: Attribute.Media<'images' | 'videos' | 'audios' | 'files', true>;
     author: Attribute.String;
     categories: Attribute.Relation<
       'api::article.article',
@@ -908,6 +910,7 @@ export interface ApiBrandBrand extends Schema.CollectionType {
   attributes: {
     brandName: Attribute.String & Attribute.Required;
     image: Attribute.Media<'images'>;
+    slug: Attribute.UID<'api::brand.brand', 'brandName'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -980,6 +983,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     categoryName: Attribute.String;
     slug: Attribute.String & Attribute.Required;
     description: Attribute.Text;
+    url: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1004,6 +1008,7 @@ export interface ApiFaqFaq extends Schema.SingleType {
     singularName: 'faq';
     pluralName: 'faqs';
     displayName: 'Faq';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1011,6 +1016,7 @@ export interface ApiFaqFaq extends Schema.SingleType {
   attributes: {
     title: Attribute.String;
     des: Attribute.Blocks;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1075,6 +1081,7 @@ export interface ApiHotSaleHotSale extends Schema.CollectionType {
       'oneToMany',
       'api::products.products'
     >;
+    url: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1099,6 +1106,7 @@ export interface ApiInfoSecureInfoSecure extends Schema.SingleType {
     singularName: 'info-secure';
     pluralName: 'info-secures';
     displayName: 'Info Secure';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1106,6 +1114,7 @@ export interface ApiInfoSecureInfoSecure extends Schema.SingleType {
   attributes: {
     title: Attribute.String;
     des: Attribute.Blocks;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1172,6 +1181,7 @@ export interface ApiManualManual extends Schema.SingleType {
   attributes: {
     title: Attribute.String;
     des: Attribute.Blocks;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

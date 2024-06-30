@@ -23,6 +23,10 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "brandName"
     }
   }
 }

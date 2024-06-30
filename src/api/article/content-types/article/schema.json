@@ -19,12 +19,15 @@
       "type": "uid",
       "targetField": "title"
     },
-    "orgImage": {
+    "media": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "allowedTypes": [
-        "images"
+        "images",
+        "videos",
+        "audios",
+        "files"
       ]
     },
     "author": {
