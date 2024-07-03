@@ -27,6 +27,9 @@
     "slug": {
       "type": "uid",
       "targetField": "brandName"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

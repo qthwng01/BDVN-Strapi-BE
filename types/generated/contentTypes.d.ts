@@ -911,6 +911,7 @@ export interface ApiBrandBrand extends Schema.CollectionType {
     brandName: Attribute.String & Attribute.Required;
     image: Attribute.Media<'images'>;
     slug: Attribute.UID<'api::brand.brand', 'brandName'>;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1256,7 +1257,7 @@ export interface ApiProductsProducts extends Schema.CollectionType {
       'api::brand.brand'
     >;
     discountPrice: Attribute.Float & Attribute.Required;
-    price: Attribute.Float;
+    price: Attribute.Float & Attribute.Required;
     rating: Attribute.Decimal;
     onStock: Attribute.Boolean & Attribute.Required;
     aroma: Attribute.Component<'aroma.aroma', true>;
@@ -1265,6 +1266,8 @@ export interface ApiProductsProducts extends Schema.CollectionType {
     description: Attribute.RichText;
     productManual: Attribute.Component<'product-manual.product-manual', true>;
     seo: Attribute.Component<'shared.seo'>;
+    producer: Attribute.String;
+    manuCountry: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
