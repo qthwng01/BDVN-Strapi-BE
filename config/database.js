@@ -3,7 +3,7 @@ const fs = require("fs");
 
 module.exports = ({ env }) => ({
   connection: {
-    client: "postgres",
+    client: "mysql2",
     connection: {
       host: env("DATABASE_HOST"),
       port: env("DATABASE_PORT"),
@@ -12,7 +12,7 @@ module.exports = ({ env }) => ({
       password: env("DATABASE_PASSWORD"),
       ssl: {
         rejectUnauthorized: true,
-        ca: fs.readFileSync("./ca.pem").toString(),
+        ca: fs.readFileSync("./ca2.pem").toString(),
       },
     },
     useNullAsDefault: true,
