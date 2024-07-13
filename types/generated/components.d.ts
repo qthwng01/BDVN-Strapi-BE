@@ -8,6 +8,7 @@ export interface AromaAroma extends Schema.Component {
   };
   attributes: {
     name: Attribute.String;
+    onStock: Attribute.Boolean & Attribute.Required;
   };
 }
 
@@ -21,6 +22,7 @@ export interface CapacityCapacity extends Schema.Component {
   attributes: {
     name: Attribute.String;
     price: Attribute.Float;
+    onStock: Attribute.Boolean & Attribute.Required;
   };
 }
 

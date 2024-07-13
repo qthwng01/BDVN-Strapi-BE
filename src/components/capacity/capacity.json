@@ -12,6 +12,10 @@
     },
     "price": {
       "type": "float"
+    },
+    "onStock": {
+      "type": "boolean",
+      "required": true
     }
   }
 }

@@ -8,6 +8,10 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "onStock": {
+      "type": "boolean",
+      "required": true
     }
   }
 }
