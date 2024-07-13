@@ -803,6 +803,7 @@ export interface ApiAboutAbout extends Schema.SingleType {
     title: Attribute.String;
     des: Attribute.Blocks;
     seo: Attribute.Component<'shared.seo'>;
+    sku: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1268,6 +1269,8 @@ export interface ApiProductsProducts extends Schema.CollectionType {
     seo: Attribute.Component<'shared.seo'>;
     producer: Attribute.String;
     manuCountry: Attribute.String;
+    freeShip: Attribute.Boolean & Attribute.DefaultTo<false>;
+    sku: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

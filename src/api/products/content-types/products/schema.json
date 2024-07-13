@@ -82,6 +82,13 @@
     },
     "manuCountry": {
       "type": "string"
+    },
+    "freeShip": {
+      "type": "boolean",
+      "default": false
+    },
+    "sku": {
+      "type": "string"
     }
   }
 }
