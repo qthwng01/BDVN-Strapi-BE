@@ -1141,16 +1141,22 @@ export interface ApiInvoiceInvoice extends Schema.CollectionType {
     singularName: 'invoice';
     pluralName: 'invoices';
     displayName: 'invoice';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     phoneNumber: Attribute.String & Attribute.Required & Attribute.Unique;
-    name: Attribute.String & Attribute.Required;
+    fullName: Attribute.String & Attribute.Required;
     email: Attribute.String;
     datetime: Attribute.DateTime;
     address: Attribute.Text;
+    orderId: Attribute.String;
+    uA: Attribute.String;
+    overTotal: Attribute.Float;
+    orderCode: Attribute.String;
+    city: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

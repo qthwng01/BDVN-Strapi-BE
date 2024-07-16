@@ -4,7 +4,8 @@
   "info": {
     "singularName": "invoice",
     "pluralName": "invoices",
-    "displayName": "invoice"
+    "displayName": "invoice",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,7 +17,7 @@
       "required": true,
       "unique": true
     },
-    "name": {
+    "fullName": {
       "type": "string",
       "required": true
     },
@@ -28,6 +29,21 @@
     },
     "address": {
       "type": "text"
+    },
+    "orderId": {
+      "type": "string"
+    },
+    "uA": {
+      "type": "string"
+    },
+    "overTotal": {
+      "type": "float"
+    },
+    "orderCode": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
     }
   }
 }
