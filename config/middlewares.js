@@ -9,4 +9,31 @@ module.exports = [
   "strapi::session",
   "strapi::favicon",
   "strapi::public",
+  // firebase override upload
+  {
+    name: "strapi::security",
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          "connect-src": ["'self'", "https:"],
+          "img-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "storage.googleapis.com",
+            "dl.airtable.com",
+          ],
+          "media-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "storage.googleapis.com",
+            "dl.airtable.com",
+          ],
+          upgradeInsecureRequests: null,
+        },
+      },
+    },
+  },
 ];
