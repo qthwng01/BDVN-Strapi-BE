@@ -1,19 +1,19 @@
-
 module.exports = ({ env }) => ({
   // ...
   upload: {
     config: {
-      provider: "strapi-provider-firebase-storage",
+      provider: "cloudinary",
       providerOptions: {
-        serviceAccount: require('../box-detailing-vn-firebase-adminsdk-ims4e-77a2c76dbb.json'),
-        // Custom bucket name
-        bucket: env("STORAGE_BUCKET_URL"),
-        sortInStorage: true, // true | false
-        debug: false, // true | false
+        cloud_name: env("CLOUDINARY_NAME"),
+        api_key: env("CLOUDINARY_KEY"),
+        api_secret: env("CLOUDINARY_SECRET"),
+      },
+      actionOptions: {
+        upload: {},
+        delete: {},
       },
     },
   },
-  // ...
   // ...
   seo: {
     enabled: true,
