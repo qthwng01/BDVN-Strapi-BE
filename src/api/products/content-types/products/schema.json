@@ -46,16 +46,6 @@
       "type": "boolean",
       "required": true
     },
-    "aroma": {
-      "type": "component",
-      "repeatable": true,
-      "component": "aroma.aroma"
-    },
-    "capacity": {
-      "type": "component",
-      "repeatable": true,
-      "component": "capacity.capacity"
-    },
     "images": {
       "type": "media",
       "multiple": true,
@@ -82,10 +72,6 @@
     },
     "manuCountry": {
       "type": "string"
-    },
-    "freeShip": {
-      "type": "boolean",
-      "default": false
     },
     "sku": {
       "type": "string"

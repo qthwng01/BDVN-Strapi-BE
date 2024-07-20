@@ -803,7 +803,6 @@ export interface ApiAboutAbout extends Schema.SingleType {
     title: Attribute.String;
     des: Attribute.Blocks;
     seo: Attribute.Component<'shared.seo'>;
-    sku: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -836,15 +835,19 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     slug: Attribute.UID<'api::article.article', 'title'>;
-    media: Attribute.Media<'images' | 'videos' | 'audios' | 'files', true>;
     author: Attribute.String;
-    categories: Attribute.Relation<
+    cate_articles: Attribute.Relation<
       'api::article.article',
       'oneToMany',
-      'api::category.category'
+      'api::cate-article.cate-article'
     >;
-    des: Attribute.Blocks;
+    content: Attribute.Blocks;
     seo: Attribute.Component<'shared.seo', true>;
+    products: Attribute.Relation<
+      'api::article.article',
+      'oneToMany',
+      'api::products.products'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -875,10 +878,10 @@ export interface ApiBannerBanner extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
+    caption: Attribute.String;
     description: Attribute.Text;
-    slug: Attribute.UID;
     image: Attribute.Media<'images'> & Attribute.Required;
+    affLink: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -931,33 +934,30 @@ export interface ApiBrandBrand extends Schema.CollectionType {
   };
 }
 
-export interface ApiCarouselCarousel extends Schema.CollectionType {
-  collectionName: 'carousels';
+export interface ApiCateArticleCateArticle extends Schema.CollectionType {
+  collectionName: 'cate_articles';
   info: {
-    singularName: 'carousel';
-    pluralName: 'carousels';
-    displayName: 'Carousel';
-    description: '';
+    singularName: 'cate-article';
+    pluralName: 'cate-articles';
+    displayName: 'CateArticle';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
-    link: Attribute.String;
-    image: Attribute.Media<'images', true> & Attribute.Required;
-    description: Attribute.Text;
+    title: Attribute.String;
+    slug: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::carousel.carousel',
+      'api::cate-article.cate-article',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::carousel.carousel',
+      'api::cate-article.cate-article',
       'oneToOne',
       'admin::user'
     > &
@@ -977,15 +977,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    idCategory: Attribute.UID &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 10;
-      }>;
     categoryName: Attribute.String;
     slug: Attribute.String & Attribute.Required;
-    description: Attribute.Text;
+    note: Attribute.String;
     url: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1004,12 +1000,49 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiDataRankDataRank extends Schema.CollectionType {
+  collectionName: 'data_ranks';
+  info: {
+    singularName: 'data-rank';
+    pluralName: 'data-ranks';
+    displayName: 'DataRank';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    products: Attribute.Relation<
+      'api::data-rank.data-rank',
+      'oneToMany',
+      'api::products.products'
+    >;
+    title: Attribute.String;
+    note: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::data-rank.data-rank',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::data-rank.data-rank',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFaqFaq extends Schema.SingleType {
   collectionName: 'faqs';
   info: {
     singularName: 'faq';
     pluralName: 'faqs';
-    displayName: 'Faq';
+    displayName: 'Private Policy';
     description: '';
   };
   options: {
@@ -1064,44 +1097,6 @@ export interface ApiFooterFooter extends Schema.SingleType {
   };
 }
 
-export interface ApiHotSaleHotSale extends Schema.CollectionType {
-  collectionName: 'hot_sales';
-  info: {
-    singularName: 'hot-sale';
-    pluralName: 'hot-sales';
-    displayName: 'Hot Sale';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    countdownTimer: Attribute.DateTime;
-    products: Attribute.Relation<
-      'api::hot-sale.hot-sale',
-      'oneToMany',
-      'api::products.products'
-    >;
-    url: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::hot-sale.hot-sale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::hot-sale.hot-sale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiInfoSecureInfoSecure extends Schema.SingleType {
   collectionName: 'info_secures';
   info: {
@@ -1128,46 +1123,6 @@ export interface ApiInfoSecureInfoSecure extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::info-secure.info-secure',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiInvoiceInvoice extends Schema.CollectionType {
-  collectionName: 'invoices';
-  info: {
-    singularName: 'invoice';
-    pluralName: 'invoices';
-    displayName: 'invoice';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    phoneNumber: Attribute.String & Attribute.Required & Attribute.Unique;
-    fullName: Attribute.String & Attribute.Required;
-    email: Attribute.String;
-    datetime: Attribute.DateTime;
-    address: Attribute.Text;
-    orderId: Attribute.String;
-    uA: Attribute.String;
-    overTotal: Attribute.Float;
-    orderCode: Attribute.String;
-    city: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::invoice.invoice',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::invoice.invoice',
       'oneToOne',
       'admin::user'
     > &
@@ -1267,15 +1222,12 @@ export interface ApiProductsProducts extends Schema.CollectionType {
     price: Attribute.Float & Attribute.Required;
     rating: Attribute.Decimal;
     onStock: Attribute.Boolean & Attribute.Required;
-    aroma: Attribute.Component<'aroma.aroma', true>;
-    capacity: Attribute.Component<'capacity.capacity', true>;
     images: Attribute.Media<'images', true>;
     description: Attribute.RichText;
     productManual: Attribute.Component<'product-manual.product-manual', true>;
     seo: Attribute.Component<'shared.seo'>;
     producer: Attribute.String;
     manuCountry: Attribute.String;
-    freeShip: Attribute.Boolean & Attribute.DefaultTo<false>;
     sku: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1317,13 +1269,12 @@ declare module '@strapi/types' {
       'api::article.article': ApiArticleArticle;
       'api::banner.banner': ApiBannerBanner;
       'api::brand.brand': ApiBrandBrand;
-      'api::carousel.carousel': ApiCarouselCarousel;
+      'api::cate-article.cate-article': ApiCateArticleCateArticle;
       'api::category.category': ApiCategoryCategory;
+      'api::data-rank.data-rank': ApiDataRankDataRank;
       'api::faq.faq': ApiFaqFaq;
       'api::footer.footer': ApiFooterFooter;
-      'api::hot-sale.hot-sale': ApiHotSaleHotSale;
       'api::info-secure.info-secure': ApiInfoSecureInfoSecure;
-      'api::invoice.invoice': ApiInvoiceInvoice;
       'api::manual.manual': ApiManualManual;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::products.products': ApiProductsProducts;

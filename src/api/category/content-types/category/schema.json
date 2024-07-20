@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "idCategory": {
-      "type": "uid",
-      "required": true,
-      "maxLength": 10
-    },
     "categoryName": {
       "type": "string"
     },
@@ -24,11 +19,22 @@
       "type": "string",
       "required": true
     },
-    "description": {
-      "type": "text"
+    "note": {
+      "type": "string"
     },
     "url": {
       "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

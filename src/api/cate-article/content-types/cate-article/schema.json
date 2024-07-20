@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cate_articles",
+  "info": {
+    "singularName": "cate-article",
+    "pluralName": "cate-articles",
+    "displayName": "CateArticle"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    }
+  }
+}

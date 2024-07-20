@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * hot-sale service
+ * data-rank service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::hot-sale.hot-sale');
+module.exports = createCoreService('api::data-rank.data-rank');

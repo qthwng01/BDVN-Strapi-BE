@@ -19,32 +19,26 @@
       "type": "uid",
       "targetField": "title"
     },
-    "media": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos",
-        "audios",
-        "files"
-      ]
-    },
     "author": {
       "type": "string"
     },
-    "categories": {
+    "cate_articles": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::category.category"
+      "target": "api::cate-article.cate-article"
     },
-    "des": {
+    "content": {
       "type": "blocks"
     },
     "seo": {
       "type": "component",
       "repeatable": true,
       "component": "shared.seo"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::products.products"
     }
   }
 }

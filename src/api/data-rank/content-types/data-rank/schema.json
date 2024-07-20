@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "hot_sales",
+  "collectionName": "data_ranks",
   "info": {
-    "singularName": "hot-sale",
-    "pluralName": "hot-sales",
-    "displayName": "Hot Sale",
+    "singularName": "data-rank",
+    "pluralName": "data-ranks",
+    "displayName": "DataRank",
     "description": ""
   },
   "options": {
@@ -12,19 +12,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "countdownTimer": {
-      "type": "datetime"
-    },
     "products": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::products.products"
     },
-    "url": {
+    "title": {
       "type": "string"
+    },
+    "note": {
+      "type": "text"
     }
   }
 }

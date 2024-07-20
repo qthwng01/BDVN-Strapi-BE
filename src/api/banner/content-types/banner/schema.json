@@ -12,15 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "caption": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "description": {
       "type": "text"
-    },
-    "slug": {
-      "type": "uid"
     },
     "image": {
       "type": "media",
@@ -29,6 +26,9 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "affLink": {
+      "type": "string"
     }
   }
 }

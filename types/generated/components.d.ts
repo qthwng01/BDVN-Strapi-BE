@@ -1,31 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface AromaAroma extends Schema.Component {
-  collectionName: 'components_aroma_aromas';
-  info: {
-    displayName: 'Aroma';
-    description: '';
-  };
-  attributes: {
-    name: Attribute.String;
-    onStock: Attribute.Boolean & Attribute.Required;
-  };
-}
-
-export interface CapacityCapacity extends Schema.Component {
-  collectionName: 'components_capacity_capacities';
-  info: {
-    displayName: 'Capacity';
-    icon: 'database';
-    description: '';
-  };
-  attributes: {
-    name: Attribute.String;
-    price: Attribute.Float;
-    onStock: Attribute.Boolean & Attribute.Required;
-  };
-}
-
 export interface ContactContact extends Schema.Component {
   collectionName: 'components_contact_contacts';
   info: {
@@ -35,6 +9,15 @@ export interface ContactContact extends Schema.Component {
   attributes: {
     info: Attribute.String;
   };
+}
+
+export interface DataRankDataRank extends Schema.Component {
+  collectionName: 'components_data_rank_data_ranks';
+  info: {
+    displayName: 'DataRank';
+    icon: 'database';
+  };
+  attributes: {};
 }
 
 export interface ManualManual extends Schema.Component {
@@ -145,18 +128,27 @@ export interface SubNavbarSubNavbar extends Schema.Component {
   };
 }
 
+export interface TagsTags extends Schema.Component {
+  collectionName: 'components_tags_tags';
+  info: {
+    displayName: 'tags';
+    icon: 'brush';
+  };
+  attributes: {};
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'aroma.aroma': AromaAroma;
-      'capacity.capacity': CapacityCapacity;
       'contact.contact': ContactContact;
+      'data-rank.data-rank': DataRankDataRank;
       'manual.manual': ManualManual;
       'product-manual.product-manual': ProductManualProductManual;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
       'social.social': SocialSocial;
       'sub-navbar.sub-navbar': SubNavbarSubNavbar;
+      'tags.tags': TagsTags;
     }
   }
 }
