@@ -4,7 +4,8 @@
   "info": {
     "singularName": "cate-article",
     "pluralName": "cate-articles",
-    "displayName": "CateArticle"
+    "displayName": "CateArticle",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,10 +13,24 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
+      "type": "string",
+      "required": true
+    },
+    "note": {
       "type": "string"
     },
+    "MainCate": {
+      "type": "enumeration",
+      "enum": [
+        "Review",
+        "Blog"
+      ],
+      "required": true
+    },
     "slug": {
-      "type": "string"
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }

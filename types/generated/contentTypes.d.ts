@@ -848,6 +848,8 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'oneToMany',
       'api::products.products'
     >;
+    imageCover: Attribute.Media<'images'> & Attribute.Required;
+    MainArticle: Attribute.Enumeration<['Blog', 'Review']> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -878,10 +880,12 @@ export interface ApiBannerBanner extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    caption: Attribute.String;
-    description: Attribute.Text;
+    note: Attribute.String;
+    title: Attribute.String;
     image: Attribute.Media<'images'> & Attribute.Required;
     affLink: Attribute.String;
+    CateBanner: Attribute.Enumeration<['Blog', 'Review', 'Other']>;
+    content: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -940,13 +944,17 @@ export interface ApiCateArticleCateArticle extends Schema.CollectionType {
     singularName: 'cate-article';
     pluralName: 'cate-articles';
     displayName: 'CateArticle';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
-    slug: Attribute.String;
+    title: Attribute.String & Attribute.Required;
+    note: Attribute.String;
+    MainCate: Attribute.Enumeration<['Review', 'Blog']> & Attribute.Required;
+    slug: Attribute.UID<'api::cate-article.cate-article', 'title'> &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

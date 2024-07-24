@@ -12,12 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "caption": {
+    "note": {
       "type": "string",
       "required": false
     },
-    "description": {
-      "type": "text"
+    "title": {
+      "type": "string"
     },
     "image": {
       "type": "media",
@@ -29,6 +29,18 @@
     },
     "affLink": {
       "type": "string"
+    },
+    "CateBanner": {
+      "type": "enumeration",
+      "enum": [
+        "Blog",
+        "Review",
+        "Other"
+      ],
+      "required": false
+    },
+    "content": {
+      "type": "text"
     }
   }
 }
