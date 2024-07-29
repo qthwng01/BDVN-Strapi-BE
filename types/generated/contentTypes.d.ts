@@ -973,6 +973,43 @@ export interface ApiCateArticleCateArticle extends Schema.CollectionType {
   };
 }
 
+export interface ApiCateSectionCateSection extends Schema.CollectionType {
+  collectionName: 'cate_sections';
+  info: {
+    singularName: 'cate-section';
+    pluralName: 'cate-sections';
+    displayName: 'Cate Section';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    url: Attribute.String & Attribute.Required;
+    image: Attribute.Media<'images'>;
+    category: Attribute.Relation<
+      'api::cate-section.cate-section',
+      'oneToOne',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cate-section.cate-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::cate-section.cate-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -1001,43 +1038,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::category.category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiDataRankDataRank extends Schema.CollectionType {
-  collectionName: 'data_ranks';
-  info: {
-    singularName: 'data-rank';
-    pluralName: 'data-ranks';
-    displayName: 'DataRank';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    products: Attribute.Relation<
-      'api::data-rank.data-rank',
-      'oneToMany',
-      'api::products.products'
-    >;
-    title: Attribute.String;
-    note: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::data-rank.data-rank',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::data-rank.data-rank',
       'oneToOne',
       'admin::user'
     > &
@@ -1105,6 +1105,40 @@ export interface ApiFooterFooter extends Schema.SingleType {
   };
 }
 
+export interface ApiHotProductHotProduct extends Schema.CollectionType {
+  collectionName: 'hot_products';
+  info: {
+    singularName: 'hot-product';
+    pluralName: 'hot-products';
+    displayName: 'Hot Products';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    products: Attribute.Relation<
+      'api::hot-product.hot-product',
+      'oneToMany',
+      'api::products.products'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::hot-product.hot-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::hot-product.hot-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiInfoSecureInfoSecure extends Schema.SingleType {
   collectionName: 'info_secures';
   info: {
@@ -1131,6 +1165,39 @@ export interface ApiInfoSecureInfoSecure extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::info-secure.info-secure',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiListBrandListBrand extends Schema.CollectionType {
+  collectionName: 'list_brands';
+  info: {
+    singularName: 'list-brand';
+    pluralName: 'list-brands';
+    displayName: 'List Brands';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    alt: Attribute.String & Attribute.Required;
+    caption: Attribute.String & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::list-brand.list-brand',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::list-brand.list-brand',
       'oneToOne',
       'admin::user'
     > &
@@ -1177,6 +1244,7 @@ export interface ApiNavbarNavbar extends Schema.CollectionType {
     singularName: 'navbar';
     pluralName: 'navbars';
     displayName: 'Navbar';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1237,6 +1305,11 @@ export interface ApiProductsProducts extends Schema.CollectionType {
     producer: Attribute.String;
     manuCountry: Attribute.String;
     sku: Attribute.String;
+    hot_product: Attribute.Relation<
+      'api::products.products',
+      'manyToOne',
+      'api::hot-product.hot-product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1278,11 +1351,13 @@ declare module '@strapi/types' {
       'api::banner.banner': ApiBannerBanner;
       'api::brand.brand': ApiBrandBrand;
       'api::cate-article.cate-article': ApiCateArticleCateArticle;
+      'api::cate-section.cate-section': ApiCateSectionCateSection;
       'api::category.category': ApiCategoryCategory;
-      'api::data-rank.data-rank': ApiDataRankDataRank;
       'api::faq.faq': ApiFaqFaq;
       'api::footer.footer': ApiFooterFooter;
+      'api::hot-product.hot-product': ApiHotProductHotProduct;
       'api::info-secure.info-secure': ApiInfoSecureInfoSecure;
+      'api::list-brand.list-brand': ApiListBrandListBrand;
       'api::manual.manual': ApiManualManual;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::products.products': ApiProductsProducts;

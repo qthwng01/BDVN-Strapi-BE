@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * data-rank router
+ * hot-product router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::data-rank.data-rank');
+module.exports = createCoreRouter('api::hot-product.hot-product');

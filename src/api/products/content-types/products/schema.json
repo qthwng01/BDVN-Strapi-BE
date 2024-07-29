@@ -75,6 +75,12 @@
     },
     "sku": {
       "type": "string"
+    },
+    "hot_product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::hot-product.hot-product",
+      "inversedBy": "products"
     }
   }
 }

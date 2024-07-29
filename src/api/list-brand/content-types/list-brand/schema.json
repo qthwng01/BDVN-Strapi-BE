@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "list_brands",
+  "info": {
+    "singularName": "list-brand",
+    "pluralName": "list-brands",
+    "displayName": "List Brands",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "alt": {
+      "type": "string",
+      "required": true
+    },
+    "caption": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

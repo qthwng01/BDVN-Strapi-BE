@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cate_sections",
+  "info": {
+    "singularName": "cate-section",
+    "pluralName": "cate-sections",
+    "displayName": "Cate Section",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    }
+  }
+}

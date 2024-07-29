@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * data-rank controller
+ * list-brand controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::data-rank.data-rank');
+module.exports = createCoreController('api::list-brand.list-brand');

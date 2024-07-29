@@ -11,6 +11,21 @@ export interface ContactContact extends Schema.Component {
   };
 }
 
+export interface DataItemsDataItems extends Schema.Component {
+  collectionName: 'components_data_items_data_items';
+  info: {
+    displayName: 'dataItems';
+    icon: 'bulletList';
+  };
+  attributes: {
+    products: Attribute.Relation<
+      'data-items.data-items',
+      'oneToMany',
+      'api::products.products'
+    >;
+  };
+}
+
 export interface DataRankDataRank extends Schema.Component {
   collectionName: 'components_data_rank_data_ranks';
   info: {
@@ -121,10 +136,13 @@ export interface SubNavbarSubNavbar extends Schema.Component {
     description: '';
   };
   attributes: {
-    item: Attribute.String;
+    category: Attribute.Relation<
+      'sub-navbar.sub-navbar',
+      'oneToOne',
+      'api::category.category'
+    >;
     des: Attribute.Text;
     url: Attribute.String;
-    image: Attribute.Media<'images'>;
   };
 }
 
@@ -141,6 +159,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'contact.contact': ContactContact;
+      'data-items.data-items': DataItemsDataItems;
       'data-rank.data-rank': DataRankDataRank;
       'manual.manual': ManualManual;
       'product-manual.product-manual': ProductManualProductManual;

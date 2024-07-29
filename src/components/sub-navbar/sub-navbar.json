@@ -7,21 +7,16 @@
   },
   "options": {},
   "attributes": {
-    "item": {
-      "type": "string"
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
     },
     "des": {
       "type": "text"
     },
     "url": {
       "type": "string"
-    },
-    "image": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false
     }
   }
 }
