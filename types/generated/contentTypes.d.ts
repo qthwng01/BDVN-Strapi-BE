@@ -826,7 +826,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   info: {
     singularName: 'article';
     pluralName: 'articles';
-    displayName: 'Article';
+    displayName: 'Articles';
     description: '';
   };
   options: {
@@ -1045,6 +1045,38 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiContactContact extends Schema.SingleType {
+  collectionName: 'contacts';
+  info: {
+    singularName: 'contact';
+    pluralName: 'contacts';
+    displayName: 'Contact';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.Blocks;
+    title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFaqFaq extends Schema.SingleType {
   collectionName: 'faqs';
   info: {
@@ -1070,47 +1102,13 @@ export interface ApiFaqFaq extends Schema.SingleType {
   };
 }
 
-export interface ApiFooterFooter extends Schema.SingleType {
-  collectionName: 'footers';
-  info: {
-    singularName: 'footer';
-    pluralName: 'footers';
-    displayName: 'Footer';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    brandDes: Attribute.Text;
-    logo: Attribute.Media<'images'>;
-    social: Attribute.Component<'social.social', true>;
-    contact: Attribute.Component<'contact.contact', true>;
-    manual: Attribute.Component<'manual.manual', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::footer.footer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::footer.footer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiHotProductHotProduct extends Schema.CollectionType {
   collectionName: 'hot_products';
   info: {
     singularName: 'hot-product';
     pluralName: 'hot-products';
     displayName: 'Hot Products';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1132,39 +1130,6 @@ export interface ApiHotProductHotProduct extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::hot-product.hot-product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiInfoSecureInfoSecure extends Schema.SingleType {
-  collectionName: 'info_secures';
-  info: {
-    singularName: 'info-secure';
-    pluralName: 'info-secures';
-    displayName: 'Info Secure';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    des: Attribute.Blocks;
-    seo: Attribute.Component<'shared.seo'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::info-secure.info-secure',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::info-secure.info-secure',
       'oneToOne',
       'admin::user'
     > &
@@ -1198,39 +1163,6 @@ export interface ApiListBrandListBrand extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::list-brand.list-brand',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiManualManual extends Schema.SingleType {
-  collectionName: 'manuals';
-  info: {
-    singularName: 'manual';
-    pluralName: 'manuals';
-    displayName: 'Manual';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    des: Attribute.Blocks;
-    seo: Attribute.Component<'shared.seo'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::manual.manual',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::manual.manual',
       'oneToOne',
       'admin::user'
     > &
@@ -1275,7 +1207,7 @@ export interface ApiProductsProducts extends Schema.CollectionType {
   info: {
     singularName: 'products';
     pluralName: 'all-products';
-    displayName: 'Product';
+    displayName: 'Products';
     description: '';
   };
   options: {
@@ -1299,17 +1231,13 @@ export interface ApiProductsProducts extends Schema.CollectionType {
     rating: Attribute.Decimal;
     onStock: Attribute.Boolean & Attribute.Required;
     images: Attribute.Media<'images', true>;
-    description: Attribute.RichText;
     productManual: Attribute.Component<'product-manual.product-manual', true>;
     seo: Attribute.Component<'shared.seo'>;
     producer: Attribute.String;
-    manuCountry: Attribute.String;
     sku: Attribute.String;
-    hot_product: Attribute.Relation<
-      'api::products.products',
-      'manyToOne',
-      'api::hot-product.hot-product'
-    >;
+    description: Attribute.Blocks;
+    embedVideo: Attribute.String;
+    country: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1324,6 +1252,29 @@ export interface ApiProductsProducts extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTermTerm extends Schema.SingleType {
+  collectionName: 'terms';
+  info: {
+    singularName: 'term';
+    pluralName: 'terms';
+    displayName: 'Term';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::term.term', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::term.term', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -1353,14 +1304,13 @@ declare module '@strapi/types' {
       'api::cate-article.cate-article': ApiCateArticleCateArticle;
       'api::cate-section.cate-section': ApiCateSectionCateSection;
       'api::category.category': ApiCategoryCategory;
+      'api::contact.contact': ApiContactContact;
       'api::faq.faq': ApiFaqFaq;
-      'api::footer.footer': ApiFooterFooter;
       'api::hot-product.hot-product': ApiHotProductHotProduct;
-      'api::info-secure.info-secure': ApiInfoSecureInfoSecure;
       'api::list-brand.list-brand': ApiListBrandListBrand;
-      'api::manual.manual': ApiManualManual;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::products.products': ApiProductsProducts;
+      'api::term.term': ApiTermTerm;
     }
   }
 }

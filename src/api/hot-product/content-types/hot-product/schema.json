@@ -4,7 +4,8 @@
   "info": {
     "singularName": "hot-product",
     "pluralName": "hot-products",
-    "displayName": "Hot Products"
+    "displayName": "Hot Products",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,8 +15,7 @@
     "products": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::products.products",
-      "mappedBy": "hot_product"
+      "target": "api::products.products"
     }
   }
 }

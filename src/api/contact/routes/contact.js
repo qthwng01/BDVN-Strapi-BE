@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * manual router
+ * contact router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::manual.manual');
+module.exports = createCoreRouter('api::contact.contact');

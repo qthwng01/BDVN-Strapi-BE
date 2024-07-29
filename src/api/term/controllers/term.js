@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * manual controller
+ * term controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::manual.manual');
+module.exports = createCoreController('api::term.term');

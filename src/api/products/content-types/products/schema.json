@@ -4,7 +4,7 @@
   "info": {
     "singularName": "products",
     "pluralName": "all-products",
-    "displayName": "Product",
+    "displayName": "Products",
     "description": ""
   },
   "options": {
@@ -54,9 +54,6 @@
         "images"
       ]
     },
-    "description": {
-      "type": "richtext"
-    },
     "productManual": {
       "type": "component",
       "repeatable": true,
@@ -70,17 +67,17 @@
     "producer": {
       "type": "string"
     },
-    "manuCountry": {
-      "type": "string"
-    },
     "sku": {
       "type": "string"
     },
-    "hot_product": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::hot-product.hot-product",
-      "inversedBy": "products"
+    "description": {
+      "type": "blocks"
+    },
+    "embedVideo": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
     }
   }
 }

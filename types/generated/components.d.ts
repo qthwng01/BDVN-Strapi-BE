@@ -136,13 +136,9 @@ export interface SubNavbarSubNavbar extends Schema.Component {
     description: '';
   };
   attributes: {
-    category: Attribute.Relation<
-      'sub-navbar.sub-navbar',
-      'oneToOne',
-      'api::category.category'
-    >;
     des: Attribute.Text;
     url: Attribute.String;
+    subItem: Attribute.String;
   };
 }
 
