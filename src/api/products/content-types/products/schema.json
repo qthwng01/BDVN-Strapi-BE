@@ -78,6 +78,12 @@
     },
     "country": {
       "type": "string"
+    },
+    "affLink": {
+      "type": "string"
+    },
+    "shopeeLink": {
+      "type": "string"
     }
   }
 }

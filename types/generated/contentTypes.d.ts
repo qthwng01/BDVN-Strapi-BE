@@ -1238,6 +1238,8 @@ export interface ApiProductsProducts extends Schema.CollectionType {
     description: Attribute.Blocks;
     embedVideo: Attribute.String;
     country: Attribute.String;
+    affLink: Attribute.String;
+    shopeeLink: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
