@@ -888,6 +888,7 @@ export interface ApiBannerBanner extends Schema.CollectionType {
       ['Blog', 'Review', 'Other', 'CarCare', 'ReviewSideBar']
     >;
     content: Attribute.Text;
+    show: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

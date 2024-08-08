@@ -43,6 +43,11 @@
     },
     "content": {
       "type": "text"
+    },
+    "show": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
