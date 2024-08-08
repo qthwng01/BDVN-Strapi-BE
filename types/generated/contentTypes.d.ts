@@ -884,7 +884,9 @@ export interface ApiBannerBanner extends Schema.CollectionType {
     title: Attribute.String;
     image: Attribute.Media<'images'> & Attribute.Required;
     affLink: Attribute.String;
-    CateBanner: Attribute.Enumeration<['Blog', 'Review', 'Other']>;
+    CateBanner: Attribute.Enumeration<
+      ['Blog', 'Review', 'Other', 'CarCare', 'ReviewSideBar']
+    >;
     content: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

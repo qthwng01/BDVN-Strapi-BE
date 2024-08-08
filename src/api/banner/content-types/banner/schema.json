@@ -35,7 +35,9 @@
       "enum": [
         "Blog",
         "Review",
-        "Other"
+        "Other",
+        "CarCare",
+        "ReviewSideBar"
       ],
       "required": false
     },
