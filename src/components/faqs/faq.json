@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_faqs_faqs",
+  "info": {
+    "displayName": "FAQ",
+    "icon": "file",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "qs": {
+      "type": "string"
+    },
+    "ans": {
+      "type": "text"
+    }
+  }
+}

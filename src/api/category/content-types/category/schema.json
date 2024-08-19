@@ -35,6 +35,12 @@
         "videos",
         "audios"
       ]
+    },
+    "FAQ": {
+      "displayName": "FAQ",
+      "type": "component",
+      "repeatable": true,
+      "component": "faqs.faq"
     }
   }
 }

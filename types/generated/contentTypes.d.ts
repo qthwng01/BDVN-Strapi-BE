@@ -1030,6 +1030,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     note: Attribute.String;
     url: Attribute.String;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    FAQ: Attribute.Component<'faqs.faq', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

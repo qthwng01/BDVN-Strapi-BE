@@ -35,6 +35,30 @@ export interface DataRankDataRank extends Schema.Component {
   attributes: {};
 }
 
+export interface DmdDataDmdData extends Schema.Component {
+  collectionName: 'components_dmd_data_dmd_data';
+  info: {
+    displayName: 'DMD Data';
+    icon: 'bulletList';
+  };
+  attributes: {
+    cc: Attribute.JSON;
+  };
+}
+
+export interface FaqsFaq extends Schema.Component {
+  collectionName: 'components_faqs_faqs';
+  info: {
+    displayName: 'FAQ';
+    icon: 'file';
+    description: '';
+  };
+  attributes: {
+    qs: Attribute.String;
+    ans: Attribute.Text;
+  };
+}
+
 export interface ManualManual extends Schema.Component {
   collectionName: 'components_manual_manuals';
   info: {
@@ -157,6 +181,8 @@ declare module '@strapi/types' {
       'contact.contact': ContactContact;
       'data-items.data-items': DataItemsDataItems;
       'data-rank.data-rank': DataRankDataRank;
+      'dmd-data.dmd-data': DmdDataDmdData;
+      'faqs.faq': FaqsFaq;
       'manual.manual': ManualManual;
       'product-manual.product-manual': ProductManualProductManual;
       'shared.meta-social': SharedMetaSocial;

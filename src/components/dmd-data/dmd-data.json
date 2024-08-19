@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_dmd_data_dmd_data",
+  "info": {
+    "displayName": "DMD Data",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "cc": {
+      "type": "json"
+    }
+  }
+}
