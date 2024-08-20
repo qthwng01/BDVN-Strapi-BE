@@ -27,9 +27,6 @@
       "relation": "oneToMany",
       "target": "api::cate-article.cate-article"
     },
-    "content": {
-      "type": "blocks"
-    },
     "seo": {
       "type": "component",
       "repeatable": true,
@@ -55,6 +52,14 @@
         "Review"
       ],
       "required": true
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
     }
   }
 }

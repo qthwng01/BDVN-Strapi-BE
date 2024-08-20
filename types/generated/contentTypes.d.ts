@@ -841,7 +841,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'oneToMany',
       'api::cate-article.cate-article'
     >;
-    content: Attribute.Blocks;
     seo: Attribute.Component<'shared.seo', true>;
     products: Attribute.Relation<
       'api::article.article',
@@ -850,6 +849,14 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     >;
     imageCover: Attribute.Media<'images'> & Attribute.Required;
     MainArticle: Attribute.Enumeration<['Blog', 'Review']> & Attribute.Required;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
