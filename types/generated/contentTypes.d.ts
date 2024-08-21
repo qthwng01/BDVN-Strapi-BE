@@ -842,11 +842,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'api::cate-article.cate-article'
     >;
     seo: Attribute.Component<'shared.seo', true>;
-    products: Attribute.Relation<
-      'api::article.article',
-      'oneToMany',
-      'api::products.products'
-    >;
     imageCover: Attribute.Media<'images'> & Attribute.Required;
     MainArticle: Attribute.Enumeration<['Blog', 'Review']> & Attribute.Required;
     content: Attribute.RichText &

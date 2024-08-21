@@ -32,11 +32,6 @@
       "repeatable": true,
       "component": "shared.seo"
     },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::products.products"
-    },
     "imageCover": {
       "type": "media",
       "multiple": false,
