@@ -835,7 +835,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     slug: Attribute.UID<'api::article.article', 'title'>;
-    author: Attribute.String;
+    author: Attribute.String & Attribute.DefaultTo<'Admin'>;
     cate_articles: Attribute.Relation<
       'api::article.article',
       'oneToMany',
@@ -948,7 +948,7 @@ export interface ApiCateArticleCateArticle extends Schema.CollectionType {
   info: {
     singularName: 'cate-article';
     pluralName: 'cate-articles';
-    displayName: 'CateArticle';
+    displayName: 'Cate Article';
     description: '';
   };
   options: {
@@ -978,43 +978,6 @@ export interface ApiCateArticleCateArticle extends Schema.CollectionType {
   };
 }
 
-export interface ApiCateSectionCateSection extends Schema.CollectionType {
-  collectionName: 'cate_sections';
-  info: {
-    singularName: 'cate-section';
-    pluralName: 'cate-sections';
-    displayName: 'Cate Section';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    url: Attribute.String & Attribute.Required;
-    image: Attribute.Media<'images'>;
-    category: Attribute.Relation<
-      'api::cate-section.cate-section',
-      'oneToOne',
-      'api::category.category'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::cate-section.cate-section',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::cate-section.cate-section',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -1027,12 +990,9 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    categoryName: Attribute.String;
+    categoryName: Attribute.String & Attribute.Required;
     slug: Attribute.String & Attribute.Required;
-    note: Attribute.String;
-    url: Attribute.String;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    FAQ: Attribute.Component<'faqs.faq', true>;
+    description: Attribute.Text & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1143,39 +1103,6 @@ export interface ApiHotProductHotProduct extends Schema.CollectionType {
   };
 }
 
-export interface ApiListBrandListBrand extends Schema.CollectionType {
-  collectionName: 'list_brands';
-  info: {
-    singularName: 'list-brand';
-    pluralName: 'list-brands';
-    displayName: 'List Brands';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    alt: Attribute.String & Attribute.Required;
-    caption: Attribute.String & Attribute.Required;
-    image: Attribute.Media<'images'> & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::list-brand.list-brand',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::list-brand.list-brand',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiNavbarNavbar extends Schema.CollectionType {
   collectionName: 'navbars';
   info: {
@@ -1234,8 +1161,8 @@ export interface ApiProductsProducts extends Schema.CollectionType {
     >;
     discountPrice: Attribute.Float & Attribute.Required;
     price: Attribute.Float & Attribute.Required;
-    rating: Attribute.Decimal;
-    onStock: Attribute.Boolean & Attribute.Required;
+    rating: Attribute.Decimal & Attribute.Required;
+    onStock: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
     images: Attribute.Media<'images', true>;
     productManual: Attribute.Component<'product-manual.product-manual', true>;
     seo: Attribute.Component<'shared.seo'>;
@@ -1310,12 +1237,10 @@ declare module '@strapi/types' {
       'api::banner.banner': ApiBannerBanner;
       'api::brand.brand': ApiBrandBrand;
       'api::cate-article.cate-article': ApiCateArticleCateArticle;
-      'api::cate-section.cate-section': ApiCateSectionCateSection;
       'api::category.category': ApiCategoryCategory;
       'api::contact.contact': ApiContactContact;
       'api::faq.faq': ApiFaqFaq;
       'api::hot-product.hot-product': ApiHotProductHotProduct;
-      'api::list-brand.list-brand': ApiListBrandListBrand;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::products.products': ApiProductsProducts;
       'api::term.term': ApiTermTerm;

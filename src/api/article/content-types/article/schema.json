@@ -20,7 +20,8 @@
       "targetField": "title"
     },
     "author": {
-      "type": "string"
+      "type": "string",
+      "default": "Admin"
     },
     "cate_articles": {
       "type": "relation",

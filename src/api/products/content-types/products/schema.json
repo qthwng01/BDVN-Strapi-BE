@@ -40,11 +40,13 @@
       "required": true
     },
     "rating": {
-      "type": "decimal"
+      "type": "decimal",
+      "required": true
     },
     "onStock": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default": true
     },
     "images": {
       "type": "media",
