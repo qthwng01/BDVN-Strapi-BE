@@ -852,6 +852,9 @@ export interface ApiArticleArticle extends Schema.CollectionType {
           preset: 'rich';
         }
       >;
+    countProduct: Attribute.Integer &
+      Attribute.Required &
+      Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
