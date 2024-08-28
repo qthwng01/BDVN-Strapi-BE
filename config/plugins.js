@@ -18,4 +18,8 @@ module.exports = ({ env }) => ({
   seo: {
     enabled: true,
   },
+  // Other plugin configurations...
+  redirects: {
+    enabled: true,
+  },
 });
